@@ -115,6 +115,8 @@
 #define OSD_MSG_HEADFREE            "(HEADFREE)"
 #define OSD_MSG_NAV_SOARING         "(SOARING)"
 #define OSD_MSG_UNABLE_ARM          "UNABLE TO ARM"
+#define OSD_MSG_SAVING_SETTNGS      "** SAVING SETTINGS **"
+#define OSD_MSG_SETTINGS_SAVED      "** SETTINGS SAVED **"
 
 #ifdef USE_DEV_TOOLS
 #define OSD_MSG_GRD_TEST_MODE       "GRD TEST > MOTORS DISABLED"
@@ -372,6 +374,7 @@ typedef struct osdConfig_s {
 
     videoSystem_e video_system;
     uint8_t row_shiftdown;
+    int16_t msp_displayport_fullframe_interval;
 
     // Preferences
     uint8_t main_voltage_decimals;
@@ -470,6 +473,9 @@ displayCanvas_t *osdGetDisplayPortCanvas(void);
 
 int16_t osdGetHeading(void);
 int32_t osdGetAltitude(void);
+
+void osdStartedSaveProcess(void);
+void osdShowEEPROMSavedNotification(void);
 
 void osdCrosshairPosition(uint8_t *x, uint8_t *y);
 bool osdFormatCentiNumber(char *buff, int32_t centivalue, uint32_t scale, int maxDecimals, int maxScaledDecimals, int length);
