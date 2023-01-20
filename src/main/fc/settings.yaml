@@ -2296,7 +2296,7 @@ groups:
     members:
       - name: nav_disarm_on_landing
         description: "If set to ON, INAV disarms the FC after landing"
-        default_value: OFF
+        default_value: ON
         field: general.flags.disarm_on_landing
         type: bool
       - name: nav_land_detect_sensitivity
@@ -3589,6 +3589,12 @@ groups:
       - name: name
         description: "Craft name"
         default_value: ""
+        field: craftName
+        max: MAX_NAME_LENGTH
+      - name: pilot_name
+        description: "Pilot name"
+        default_value: ""
+        field: pilotName
         max: MAX_NAME_LENGTH
 
   - name: PG_MODE_ACTIVATION_OPERATOR_CONFIG
@@ -3633,8 +3639,8 @@ groups:
       - name: tz_offset
         description: "Time zone offset from UTC, in minutes. This is applied to the GPS time for logging and time-stamping of Blackbox logs"
         default_value: 0
-        min: -1440
-        max: 1440
+        min: -720
+        max: 840
       - name: tz_automatic_dst
         description: "Automatically add Daylight Saving Time to the GPS time when needed or simply ignore it. Includes presets for EU and the USA - if you live outside these areas it is suggested to manage DST manually via `tz_offset`."
         default_value: "OFF"
